@@ -1,0 +1,72 @@
+name: 'Send Mail'
+description: 'Send email via SMTP — plain text, HTML, or with attachments'
+author: 'Simons Foundation'
+
+branding:
+  icon: 'mail'
+  color: 'blue'
+
+inputs:
+  server_address:
+    description: 'SMTP server hostname'
+    required: true
+  server_port:
+    description: 'SMTP server port'
+    required: false
+    default: '587'
+  secure:
+    description: 'Use TLS (true = direct TLS on port 465, false = STARTTLS)'
+    required: false
+    default: 'false'
+  username:
+    description: 'SMTP auth username'
+    required: false
+  password:
+    description: 'SMTP auth password'
+    required: false
+  subject:
+    description: 'Email subject'
+    required: true
+  to:
+    description: 'Recipient email addresses, comma-separated'
+    required: true
+  from:
+    description: 'FROM address, e.g. "Display Name <user@example.com>" or just "user@example.com"'
+    required: true
+  envelope_from:
+    description: 'Envelope FROM address (for bounces/SPF). Defaults to from if not set.'
+    required: false
+  reply_to:
+    description: 'Reply-To address'
+    required: false
+  cc:
+    description: 'CC recipients, comma-separated'
+    required: false
+  bcc:
+    description: 'BCC recipients, comma-separated'
+    required: false
+  body:
+    description: 'Plain text email body'
+    required: false
+  html_body:
+    description: 'HTML email body. If both body and html_body are set, sends multipart message.'
+    required: false
+  attachments:
+    description: 'File paths to attach, comma-separated. Supports glob patterns.'
+    required: false
+  ignore_cert:
+    description: 'Ignore TLS certificate errors (not recommended in production)'
+    required: false
+    default: 'false'
+  priority:
+    description: 'Email priority: high, normal, or low'
+    required: false
+    default: 'normal'
+
+outputs:
+  result:
+    description: 'Result message from the SMTP server'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
