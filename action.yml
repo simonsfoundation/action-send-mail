@@ -1,4 +1,4 @@
-name: 'Send Mail'
+name: 'Send Failure Email via SMTP'
 description: 'Send email via SMTP — plain text, HTML, or with attachments'
 author: 'Simons Foundation'
 
