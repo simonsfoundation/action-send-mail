@@ -6,7 +6,7 @@ GitHub Action to send email via SMTP — plain text, HTML, or with attachments.
 
 ```yaml
 - name: Send email
-  uses: your-org/action-send-mail@v1
+  uses: simonsfoundation/action-send-mail@v1
   with:
     server_address: smtp.example.com
     server_port: 587
@@ -53,7 +53,7 @@ At least one of `body` or `html_body` must be provided.
 ### Plain text to multiple recipients
 
 ```yaml
-- uses: your-org/action-send-mail@v1
+- uses: simonsfoundation/action-send-mail@v1
   with:
     server_address: smtp.gmail.com
     server_port: 587
@@ -70,7 +70,7 @@ At least one of `body` or `html_body` must be provided.
 ### HTML email
 
 ```yaml
-- uses: your-org/action-send-mail@v1
+- uses: simonsfoundation/action-send-mail@v1
   with:
     server_address: smtp.example.com
     server_port: 465
@@ -91,7 +91,7 @@ At least one of `body` or `html_body` must be provided.
 - name: Build report
   run: make report.pdf
 
-- uses: your-org/action-send-mail@v1
+- uses: simonsfoundation/action-send-mail@v1
   with:
     server_address: smtp.example.com
     server_port: 587
@@ -107,7 +107,7 @@ At least one of `body` or `html_body` must be provided.
 ### Custom envelope FROM (SPF/bounce handling)
 
 ```yaml
-- uses: your-org/action-send-mail@v1
+- uses: simonsfoundation/action-send-mail@v1
   with:
     server_address: smtp.example.com
     server_port: 587
