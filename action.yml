@@ -68,5 +68,5 @@ outputs:
     description: 'Result message from the SMTP server'
 
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.js'
