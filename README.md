@@ -5,17 +5,26 @@ GitHub Action to send email via SMTP — plain text, HTML, or with attachments.
 ## Usage
 
 ```yaml
-- name: Send email
-  uses: simonsfoundation/action-send-mail@v1
-  with:
-    server_address: smtp.example.com
-    server_port: 587
-    username: ${{ secrets.SMTP_USERNAME }}
-    password: ${{ secrets.SMTP_PASSWORD }}
-    subject: Build ${{ github.run_number }} completed
-    to: team@example.com
-    from: CI Bot <ci@example.com>
-    body: Workflow ${{ github.workflow }} finished.
+      - name: Failure notification
+        if: failure()
+        uses: simonsfoundation/action-send-mail@v1
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: 587
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "[GitHubAction] Failed ${{ github.workflow }} #${{ github.run_number }}"
+          to: ${{ vars.EMAIL_RECIPIENT }}
+          from: Github Actions <gh-action@simonsfoundation.org>
+          body: |
+            Hello!
+
+            Workflow "${{ github.workflow }}" has encountered a failure in the GitHub Action.
+
+            Please review the log at ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            Contact developer if you need assistance.
+
 ```
 
 ## Inputs
